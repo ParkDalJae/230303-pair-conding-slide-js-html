@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+
+    }
+    #root{
+      position:absolute; 
+      width: 600px; 
+      height: 600px;
+    }
+    #root>div{
+      position:absolute; 
+      z-index: 999;
+      color: antiquewhite;
+      font-weight: 900;
+      font-size: 50px;
+    }
+    #root>div:nth-child(1){top: 250px; left: 10px;}
+    #root>div:nth-child(2){top: 250px; right: 10px;}
+    #slide{
+      position : absolute;
+      display: flex;
+      width: 600px; 
+      height: 600px;
+    }
+    #slide>section{
+      position: absolute; 
+      display: flex; 
+      justify-content: center; 
+      align-items: flex-end; 
+      width: 600px; 
+      height: 600px; 
+    }
+    #slide>section>p{
+      position: absolute; 
+      margin-bottom: 20px;
+      color: antiquewhite; 
+    }
+    #slide>section>img{
+      position: absolute;     
+      width: 100%;
+      height: 100%;
+    }
+    #slide>section:nth-child(1){z-index: 0;}
+    #slide>section:nth-child(2){z-index: 0;}
+    #slide>section:nth-child(3){z-index: 0;}
+    #slide>section:nth-child(1)>img{}
+    #slide>section:nth-child(2)>img{}
+    #slide>section:nth-child(3)>img{}
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="prev"><</div>
+    <div id="next">></div>
+    <main id="slide">
+      <section>
+        <img src="cat/cat (1).png" alt="">
+        <p>Lorem ipsum, dolor sit amet consectetur</p>
+      </section>
+      <section>
+        <img src="cat/cat (2).png" alt="">
+        <p>Lorem ipsum, dolor sit amet consectetur</p>
+      </section>
+      <section>
+        <img src="cat/cat (3).png" alt="">
+        <p>Lorem ipsum, dolor sit amet consectetur</p>
+      </section>
+    </main>
+  </div>
+  <script>
+    const root = document.getElementById('root')
+    const slide = document.getElementById('slide')
+    const prev = document.getElementById('prev')
+    const next = document.getElementById('next')
+    let count = slide.children.length;
+    console.dir(count)
+    console.dir("--------------------------------")
+    prev.addEventListener("click",function(){
+      console.log(count)
+      if(count===3){ count-- }
+      if(count===2){ count-- }
+      if(count===1){ count=3 }
+        console.log(count)
+      // for(let i=slide.children.length-1;i>=0;i--){
+      // }
+    })
+    next.addEventListener("click",function(){
+      if(count===0){count++; slide.children[count].style.zIndex = 998;}
+      if(count===1){count++; slide.children[count].style.zIndex = 998;}
+      if(count===2){count=0; slide.children[count].style.zIndex = 998;}
+    })
+
+  </script>
+</body>
+</html>
